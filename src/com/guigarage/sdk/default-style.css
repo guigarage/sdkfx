@@ -1,0 +1,217 @@
+
+.root {
+    -fx-basic-color: red;
+    -fx-lighter-color: derive(-fx-basic-color, 80% )
+}
+
+.text {
+    -fx-font-family: 'Roboto';
+}
+
+.button {
+    -fx-border-color: null;
+    -fx-background-color: derive(-fx-basic-color, 40% );
+    -fx-background-radius: 2px;
+    -fx-font-size: 14px;
+}
+
+.button .text{
+    -fx-fill: white;
+}
+
+.button:hover {
+    -fx-background-color: -fx-basic-color;
+}
+
+.button:hover .text{
+    -fx-fill: white;
+}
+
+.base-toolbar {
+    -fx-background-color: white;
+}
+
+.container-toolbar {
+    -fx-min-height: 32px;
+    -fx-pref-height: 32px;
+    -fx-max-height: 32px;
+    -fx-background-color: -fx-lighter-color;
+    -fx-padding: 2px 2px 2px 12px;
+}
+
+.application-toolbar {
+    -fx-min-height: 64px;
+    -fx-pref-height: 64px;
+    -fx-max-height: 64px;
+    -fx-background-color: -fx-basic-color;
+    -fx-padding: 4px;
+}
+
+.base-toolbar > .text {
+    -fx-fill: white;
+
+}
+
+.container-toolbar > .text {
+    -fx-font-size: 16px;
+}
+
+.application-toolbar > .text {
+    -fx-font-size: 20px;
+}
+
+.base-toolbar > .action-box {
+    -fx-spacing: 4px;
+}
+
+.base-toolbar > .action-box > .button {
+    -fx-border-color: null;
+    -fx-background-color: null;
+}
+
+.base-toolbar > .action-box > .button .text {
+    -fx-font-family: FontAwesome !important;
+    -fx-font-size: 22px;
+}
+
+.container-toolbar > .action-box > .button .text {
+    -fx-font-size: 16px;
+    -fx-fill: darkslategray;
+}
+
+.application-toolbar > .action-box > .button .text {
+    -fx-font-size: 22px;
+    -fx-fill: white !important;
+}
+
+.workbench {
+    -fx-background-color: white;
+}
+
+.base-container {
+    -fx-padding: 8px 12px 8px 12px;
+    -fx-background-insets: 0px, 2px;
+    -fx-background-color: -fx-lighter-color, white;
+    -fx-background-radius: 2px, 1px;
+}
+
+.base-container > .base-toolbar {
+    -fx-background-radius: 2px 2px 0px 0px;
+}
+
+.base-container > .base-toolbar > .action-box > .button .text {
+    -fx-font-size: 16px;
+    -fx-fill: white !important;
+}
+
+.base-container > .infoFooterText > .label {
+    -fx-font-size: 12px;
+    -fx-text-fill: lightgrey;
+    -fx-alignment: center;
+    -fx-padding: 6px 0px 6px 0px;
+}
+
+.base-container-footer-seperator {
+    -fx-stroke: -fx-lighter-color;
+    -fx-opacity: 0.6;
+    -fx-stroke-width: 1px;
+    -fx-stroke-line-cap: butt;
+}
+
+.form-workbench {
+    -fx-spacing: 12px;
+    -fx-fill-width: true;
+    -fx-padding: 12px;
+}
+
+.workbench-view > .action-footer {
+    -fx-pref-height: 40px;
+    -fx-min-height: 40px;
+    -fx-max-height: 40px;
+}
+
+.workbench-view > .action-footer > .button{
+    -fx-background-color: white;
+    -fx-text-fill: -fx-lighter-color;
+    -fx-font-size: 16px;
+    -fx-background-radius: 0px;
+    -fx-border-color: -fx-lighter-color;
+    -fx-border-width: 1px 0px 0px 0px;
+    -fx-border-radius: 0px;
+}
+
+.workbench-view > .action-footer > .not-first-button{
+    -fx-border-width: 1px 0px 0px 1px;
+}
+
+.workbench-view > .action-footer > .button:hover{
+    -fx-background-color: -fx-lighter-color;
+    -fx-text-fill: white;
+}
+
+
+.slider-pane-popup {
+    -fx-background-color: whitesmoke;
+    -fx-border-color: black;
+    -fx-border-width: 0px 1px 0px 0px;
+    -fx-effect: dropshadow(gaussian, #000000dd, 8, 0.4, 0, 0);
+}
+
+#slider-pane-glasspane {
+    -fx-background-color: #33333388;
+}
+
+
+.menu-pane {
+    -fx-padding: 24px 0px 24px 0px;
+}
+
+.menu-entry {
+    -fx-padding: 6px 24px 6px 24px;
+}
+
+.menu-entry:highlighted {
+    -fx-background-color: -fx-lighter-color;
+}
+
+.menu-entry-text {
+    -fx-font-size: 16px;
+    -fx-text-fill: black;
+}
+
+.menu-entry-icon {
+    -fx-font-size: 20px;
+    -fx-text-fill: #555555;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-padding: 0px 0px 2px 0px;
+}
+
+.menu-entry-icon .text {
+    -fx-font-family: FontAwesome !important;
+}
+
+.menu-entry:highlighted .menu-entry-icon {
+    -fx-text-fill: black;
+}
+
+#application-menu-button {
+    -fx-border-color: null;
+    -fx-background-color: null;
+    -fx-font-size: 22px;
+    -fx-text-fill: white;
+}
+
+#application-menu-button .text {
+    -fx-font-family: FontAwesome !important;
+}
+
+.icon-number-popup {
+    -fx-font-size: 9px;
+    -fx-text-fill: white;
+    -fx-background-color: white, red;
+    -fx-background-insets: 0px, 1.5px;
+    -fx-background-radius: 16px, 12px;
+
+    -fx-padding: 2px 6px 2px 6px;
+}
