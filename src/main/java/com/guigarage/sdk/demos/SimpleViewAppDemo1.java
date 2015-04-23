@@ -19,23 +19,12 @@ public class SimpleViewAppDemo1 {
     public static void main(String... args) {
         ApplicationFX.run(s -> {
 
-            //BaseContainer widget1 = BaseContainer.build().withTitle("Form 1").withContent(new Button("Test"));
-            //BaseContainer widget2 = BaseContainer.build().withTitle("Form 2").withInfoFooter("Ich bin eine Information").withContent(new Button("Test"));
-            //BaseContainer widget3 = BaseContainer.build().withTitle("Form 3").withToolbarItem(new Action(Icon.ANGLE_LEFT)).withToolbarItem(new Action(Icon.ANGLE_RIGHT)).withContent(new Button("Test"));
-
-           // FormWorkbench workbench = new FormWorkbench();
-            //.withChild(widget1);
-
             ActionFooter footer = new ActionFooter();
             footer.addAction(new Action("Save"));
             footer.addAction(new Action("Cancel"));
 
             WorkbenchView view = new WorkbenchView();
-            //view.setCenterNode(workbench);
             view.setFooterNode(footer);
-
-
-
 
 
             Application app = new Application();

@@ -7,6 +7,8 @@ import javafx.beans.InvalidationListener;
 import javafx.beans.property.*;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.RotateEvent;
+import javafx.scene.input.SwipeEvent;
 import javafx.scene.input.TouchEvent;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
@@ -168,6 +170,8 @@ public class SliderPane extends Region {
         contentClassPane.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> hidePopover());
         contentClassPane.addEventFilter(TouchEvent.TOUCH_PRESSED, e -> hidePopover());
 
+        addEventFilter(SwipeEvent.SWIPE_RIGHT, e -> showPopover());
+        addEventFilter(SwipeEvent.SWIPE_LEFT, e -> hidePopover());
 
         //Erst einmal das Popup ausblenden:
         popupVisiblePercents.setValue(1);
