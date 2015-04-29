@@ -5,6 +5,7 @@ import com.guigarage.sdk.action.Action;
 import com.guigarage.sdk.toolbar.ApplicationToolbar;
 import com.guigarage.sdk.container.Workbench;
 import com.guigarage.sdk.menu.MenuPane;
+import com.guigarage.sdk.util.Media;
 import com.guigarage.sdk.util.SliderPane;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -94,6 +95,22 @@ public class Application extends VBox{
 
     public void addMenuEntry(Action action) {
         menuPane.add(action);
+    }
+
+    public void setMenuHeader(Node menuHeader) {
+        menuPane.setHeader(menuHeader);
+    }
+
+    public void setMenuFooter(Node menuFooter) {
+        menuPane.setFooter(menuFooter);
+    }
+
+    public void setMediaAsMenuHeader(Media media) {
+        menuPane.setHeader(media);
+    }
+
+    public void setMenuFooter(Action action) {
+        menuPane.setActionAsFooter(action);
     }
 
     public void setMenuButtonVisible(boolean visible) {

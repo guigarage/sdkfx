@@ -1,4 +1,4 @@
-package com.guigarage.sdk.list;
+package com.guigarage.sdk.util;
 
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.SkinBase;

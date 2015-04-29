@@ -1,8 +1,9 @@
 
 .root {
     -fx-basic-color: red;
+    -fx-darker-color: derive(-fx-basic-color, -40% );
     -fx-lighter-color: derive(-fx-basic-color, 80% );
-    -fx-lightest-color: derive(-fx-basic-color, 40% );
+    -fx-lightest-color: derive(-fx-basic-color, 95% );
 }
 
 .text {
@@ -178,10 +179,6 @@
 }
 
 
-.menu-pane {
-    -fx-padding: 24px 0px 24px 0px;
-}
-
 .menu-entry {
     -fx-padding: 6px 24px 6px 24px;
 }
@@ -340,4 +337,35 @@
 
 .workbench-view > .list-view .list-cell:hover:filled {
     -fx-background-color: -fx-lighter-color;
+}
+
+.menu-pane > .menu-media-header {
+    -fx-padding: 12px 6px 24px 24px;
+    -fx-background-color: -fx-darker-color;
+    -fx-border-color: #2e2e2e;
+    -fx-border-width: 0px 0px 1px 0px;
+    -fx-spacing: 6px;
+}
+
+.menu-pane > .menu-media-header .round-image-view-circle{
+    -fx-stroke: #ffffffcc;
+    -fx-stroke-width: 1px;
+}
+
+.menu-pane > .menu-media-header .text{
+    -fx-fill: white;
+}
+
+.menu-pane > .menu-media-header .media-title .text{
+    -fx-font-size: 18px;
+}
+
+.menu-pane > .menu-media-header .media-description {
+    -fx-max-width: 80000px;
+    -fx-min-width: 0px;
+    -fx-pref-width: 0px;
+}
+
+.menu-pane > .menu-media-header .media-description .text{
+    -fx-font-size: 10px;
 }

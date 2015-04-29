@@ -1,5 +1,7 @@
 package com.guigarage.sdk.list;
 
+import com.guigarage.sdk.util.Media;
+import com.guigarage.sdk.util.RoundImageView;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.util.Callback;

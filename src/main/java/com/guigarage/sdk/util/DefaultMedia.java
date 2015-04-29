@@ -1,4 +1,4 @@
-package com.guigarage.sdk.list;
+package com.guigarage.sdk.util;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -15,15 +15,15 @@ public class DefaultMedia implements Media {
     private ObjectProperty<Image> image;
 
     public DefaultMedia() {
-        this(null, null, null);
+        this(null, null, (Image)null);
     }
 
     public DefaultMedia(String title) {
-        this(title, null, null);
+        this(title, null, (Image)null);
     }
 
     public DefaultMedia(String title, String description) {
-        this(title, description, null);
+        this(title, description, (Image)null);
     }
 
     public DefaultMedia(String title, Image image) {
@@ -34,6 +34,12 @@ public class DefaultMedia implements Media {
         this.title = new SimpleStringProperty(title);
         this.description = new SimpleStringProperty(description);
         this.image = new SimpleObjectProperty<>(image);
+    }
+
+    public DefaultMedia(String title, String description, String imageUrl) {
+        this.title = new SimpleStringProperty(title);
+        this.description = new SimpleStringProperty(description);
+        this.image = new SimpleObjectProperty<>(new Image(imageUrl));
     }
 
     public String getTitle() {

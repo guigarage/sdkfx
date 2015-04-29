@@ -1,4 +1,4 @@
-package com.guigarage.sdk.list;
+package com.guigarage.sdk.util;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.StringProperty;
