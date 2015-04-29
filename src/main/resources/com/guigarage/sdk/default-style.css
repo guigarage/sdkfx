@@ -215,3 +215,108 @@
 
     -fx-padding: 2px 6px 2px 6px;
 }
+
+.simple-media-cell .round-image-view-circle{
+    -fx-stroke-width: 1px;
+    -fx-stroke: -fx-lighter-color;
+}
+
+.simple-media-cell .media-cell-title .text {
+    -fx-font-size: 16px;
+}
+
+.simple-media-cell .media-cell-description .text {
+    -fx-font-size: 12px;
+    -fx-font-style: italic;
+    -fx-fill: gray;
+}
+
+.simple-media-cell:hover .round-image-view-circle{
+    -fx-stroke: white;
+}
+
+.simple-media-cell:hover .media-cell-title .text {
+    -fx-fill: white;
+}
+
+.simple-media-cell:hover .media-cell-description .text {
+    -fx-fill: lightgrey;
+}
+
+
+.scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar .decrement-arrow {
+    -fx-background-color: lightgray;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar .decrement-arrow:hover {
+    -fx-background-color: -fx-basic-color;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar .increment-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar .increment-arrow {
+    -fx-background-color: lightgray;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar .increment-arrow:hover {
+    -fx-background-color: -fx-basic-color;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar .track {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:horizontal .thumb {
+    -fx-background-insets: 6 0 6 0;
+}
+
+.scroll-bar .thumb {
+    -fx-border-color: transparent;
+    -fx-background-color: lightgray;
+    -fx-background-insets: 0 6 0 6;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: -fx-lighter-color;
+}
+
+.scroll-bar .thumb:selected {
+    -fx-background-color: -fx-lighter-color;
+}
+
+.scroll-bar .thumb:focused {
+    -fx-background-color: -fx-lighter-color;
+}
+
+.workbench-view > .list-view {
+    -fx-border-width: 0px;
+    -fx-background-color: white;
+    -fx-padding: 0px;
+}
+
+.workbench-view > .list-view .list-cell {
+    -fx-background-color: white;
+    -fx-border-color: lightgray;
+    -fx-border-width: 1px 0px 0px 0px;
+    -fx-padding: 12px;
+}
+
+.workbench-view > .list-view .list-cell:hover:filled {
+    -fx-background-color: -fx-lighter-color;
+}

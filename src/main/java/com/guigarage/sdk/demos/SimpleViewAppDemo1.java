@@ -4,11 +4,16 @@ import com.guigarage.sdk.ApplicationFX;
 import com.guigarage.sdk.footer.ActionFooter;
 import com.guigarage.sdk.application.Application;
 import com.guigarage.sdk.action.Action;
+import com.guigarage.sdk.list.DefaultMedia;
+import com.guigarage.sdk.list.Media;
+import com.guigarage.sdk.list.SimpleMediaListCell;
 import com.guigarage.sdk.util.Icon;
 import com.guigarage.sdk.container.BaseContainer;
 import com.guigarage.sdk.container.FormWorkbench;
 import com.guigarage.sdk.container.WorkbenchView;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
 /**
@@ -25,6 +30,26 @@ public class SimpleViewAppDemo1 {
 
             WorkbenchView view = new WorkbenchView();
             view.setFooterNode(footer);
+
+            ListView<Media> list = new ListView<Media>();
+            list.setCellFactory(SimpleMediaListCell.createDefaultCallback());
+            list.getItems().add(new DefaultMedia("Test1", "Ich bin eine Beschreibung", new Image(SimpleViewAppDemo1.class.getResource("user-01.jpg").toExternalForm())));
+            list.getItems().add(new DefaultMedia("Test2", "Ich bin eine Beschreibung", new Image(SimpleViewAppDemo1.class.getResource("user-02.jpg").toExternalForm())));
+            list.getItems().add(new DefaultMedia("Test3", "Ich bin eine Beschreibung", new Image(SimpleViewAppDemo1.class.getResource("user-03.jpg").toExternalForm())));
+            list.getItems().add(new DefaultMedia("Test4", "Ich bin eine Beschreibung", new Image(SimpleViewAppDemo1.class.getResource("user-04.jpg").toExternalForm())));
+            list.getItems().add(new DefaultMedia("Test5", "Ich bin eine Beschreibung", new Image(SimpleViewAppDemo1.class.getResource("user-05.jpg").toExternalForm())));
+            list.getItems().add(new DefaultMedia("Test6", "Ich bin eine Beschreibung", new Image(SimpleViewAppDemo1.class.getResource("user-06.jpg").toExternalForm())));
+            list.getItems().add(new DefaultMedia("Test7", "Ich bin eine Beschreibung", new Image(SimpleViewAppDemo1.class.getResource("user-07.jpg").toExternalForm())));
+            list.getItems().add(new DefaultMedia("Test8", "Ich bin eine Beschreibung", new Image(SimpleViewAppDemo1.class.getResource("user-08.jpg").toExternalForm())));
+            list.getItems().add(new DefaultMedia("Test9", "Ich bin eine Beschreibung", new Image(SimpleViewAppDemo1.class.getResource("user-09.jpg").toExternalForm())));
+            list.getItems().add(new DefaultMedia("Test10", "Ich bin eine Beschreibung", new Image(SimpleViewAppDemo1.class.getResource("user-10.jpg").toExternalForm())));
+            list.getItems().add(new DefaultMedia("Test11", "Ich bin eine Beschreibung", new Image(SimpleViewAppDemo1.class.getResource("user-11.jpg").toExternalForm())));
+            list.getItems().add(new DefaultMedia("Test12", "Ich bin eine Beschreibung", new Image(SimpleViewAppDemo1.class.getResource("user-12.jpg").toExternalForm())));
+            list.getItems().add(new DefaultMedia("Test13", "Ich bin eine Beschreibung", new Image(SimpleViewAppDemo1.class.getResource("user-13.jpg").toExternalForm())));
+
+            view.setCenterNode(list);
+
+
 
 
             Application app = new Application();
