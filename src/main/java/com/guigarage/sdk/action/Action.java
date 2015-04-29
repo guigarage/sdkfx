@@ -28,21 +28,28 @@ public class Action {
         this.icon = new SimpleObjectProperty<>(icon);
         this.title = new SimpleStringProperty();
         this.tooltip = new SimpleStringProperty();
-        callback = new SimpleObjectProperty<>();
+        this.callback = new SimpleObjectProperty<>();
     }
 
     public Action(String text) {
         this.icon = new SimpleObjectProperty<>();
         this.title = new SimpleStringProperty(text);
         this.tooltip = new SimpleStringProperty(text);
-        callback = new SimpleObjectProperty<>();
+        this.callback = new SimpleObjectProperty<>();
     }
 
     public Action(Icon icon, String text) {
         this.icon = new SimpleObjectProperty<>(icon);
         this.title = new SimpleStringProperty(text);
         this.tooltip = new SimpleStringProperty(text);
-        callback = new SimpleObjectProperty<>();
+        this.callback = new SimpleObjectProperty<>();
+    }
+
+    public Action(Icon icon, String text, Callback callback) {
+        this.icon = new SimpleObjectProperty<>(icon);
+        this.title = new SimpleStringProperty(text);
+        this.tooltip = new SimpleStringProperty(text);
+        this.callback = new SimpleObjectProperty<>(callback);
     }
 
     public String getTitle() {

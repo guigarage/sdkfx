@@ -7,6 +7,7 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 
 import java.util.HashMap;
@@ -37,6 +38,13 @@ public class ActionFooter extends Footer {
                         Button button = new Button();
                         button.setText(added.getTitle());
                         button.setTooltip(new Tooltip(added.getTooltip()));
+
+                        if(added.getIcon() != null) {
+                            Label iconLabel = new Label();
+                            iconLabel.getStyleClass().add("icon-label");
+                            iconLabel.setText(added.getIcon().getText());
+                            button.setGraphic(iconLabel);
+                        }
 
                         if(!getChildren().isEmpty()) {
                             button.getStyleClass().add("not-first-button");
