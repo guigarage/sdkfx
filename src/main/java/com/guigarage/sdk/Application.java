@@ -4,6 +4,7 @@ import com.guigarage.sdk.action.Action;
 import com.guigarage.sdk.container.Workbench;
 import com.guigarage.sdk.menu.MenuPane;
 import com.guigarage.sdk.toolbar.ApplicationToolbar;
+import com.guigarage.sdk.util.Callback;
 import com.guigarage.sdk.util.Media;
 import com.guigarage.sdk.util.SliderPane;
 import javafx.application.Platform;
@@ -45,6 +46,8 @@ public class Application extends VBox {
 
     private ObjectProperty<Scene> scene;
 
+    private ObjectProperty<Callback> stopCallback;
+
     private Lock javaFxStarterLock;
 
     private Condition javaFXStarterCondition;
@@ -52,6 +55,7 @@ public class Application extends VBox {
     public Application() {
         stage = new SimpleObjectProperty<>();
         scene = new SimpleObjectProperty<>();
+        stopCallback = new SimpleObjectProperty<>();
 
         javaFxStarterLock = new ReentrantLock();
         javaFXStarterCondition = javaFxStarterLock.newCondition();
@@ -103,6 +107,10 @@ public class Application extends VBox {
                         javaFXStarterCondition.signalAll();
                     } finally {
                         javaFxStarterLock.unlock();
+                    }
+                }, () -> {
+                    if(stopCallback.get() != null) {
+                        stopCallback.get().call();
                     }
                 });
             });
@@ -177,5 +185,17 @@ public class Application extends VBox {
             stage.get().setScene(scene.get());
             stage.get().show();
         }
+    }
+
+    public Callback getStopCallback() {
+        return stopCallback.get();
+    }
+
+    public ObjectProperty<Callback> stopCallbackProperty() {
+        return stopCallback;
+    }
+
+    public void setStopCallback(Callback stopCallback) {
+        this.stopCallback.set(stopCallback);
     }
 }
