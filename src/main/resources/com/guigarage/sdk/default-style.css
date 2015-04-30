@@ -369,3 +369,30 @@
 .menu-pane > .menu-media-header .media-description .text{
     -fx-font-size: 10px;
 }
+
+.chat-bubble {
+    -fx-fill: #2196F3;
+    -fx-arc-height: 4px;
+    -fx-arc-width: 4px;
+}
+
+.chat-bubble:me {
+    -fx-fill: #4CAF50;
+}
+
+.chat-bubble-rect {
+    -fx-arc-height: 12px;
+    -fx-arc-width: 12px;
+}
+
+.chat-text {
+    -fx-text-fill: white;
+}
+
+.chat-cell {
+    -fx-border-width: 0px !important;
+}
+
+.chat-cell:hover {
+    -fx-background-color: white !important;
+}

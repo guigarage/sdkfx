@@ -1,8 +1,9 @@
 package com.guigarage.sdk.demos;
 
-import com.guigarage.sdk.ApplicationFX;
+import com.guigarage.sdk.Application;
 import com.guigarage.sdk.action.Action;
-import com.guigarage.sdk.application.Application;
+import com.guigarage.sdk.chat.ChatTimeline;
+import com.guigarage.sdk.chat.DefaultChatMessage;
 import com.guigarage.sdk.container.WorkbenchView;
 import com.guigarage.sdk.footer.ActionFooter;
 import com.guigarage.sdk.list.MediaList;
@@ -17,24 +18,22 @@ import javafx.scene.paint.Color;
 public class SimpleViewAppDemo1 {
 
     public static void main(String... args) {
-        ApplicationFX.run(s -> {
 
-            Application app = new Application();
-            app.setTitle("MyApp");
-            //app.setBaseColor(Color.DARKORCHID);
-            app.addToolbarItem(new Action(Icon.VOLUMNE_DOWN));
-            app.addToolbarItem(new Action(Icon.VOLUMNE_UP));
+        Application app = new Application();
+        app.setTitle("MyApp");
+        app.setBaseColor(Color.DARKORCHID);
+        app.addToolbarItem(new Action(Icon.VOLUMNE_DOWN));
+        app.addToolbarItem(new Action(Icon.VOLUMNE_UP));
 
-            app.addMenuEntry(new Action(Icon.CALENDAR, "Google Calendar", () -> showPersonList(app)));
-            app.addMenuEntry(new Action(Icon.COGS, "System Settings"));
-            app.addMenuEntry(new Action(Icon.MAIL, "Mail"));
+        app.addMenuEntry(new Action(Icon.CALENDAR, "Google Calendar", () -> showPersonList(app)));
+        app.addMenuEntry(new Action(Icon.COGS, "System Settings"));
+        app.addMenuEntry(new Action(Icon.MAIL, "Mail"));
 
-            app.setMediaAsMenuHeader(new DefaultMedia("User4711", "Ich bin eine Beschreibung.", SimpleViewAppDemo1.class.getResource("user-01.jpg").toExternalForm()));
+        app.setMediaAsMenuHeader(new DefaultMedia("User4711", "Ich bin eine Beschreibung.", SimpleViewAppDemo1.class.getResource("user-13.jpg").toExternalForm()));
 
-            app.setMenuFooter(new Action(Icon.COGS, "Configure"));
+        app.setMenuFooter(new Action(Icon.COGS, "Configure"));
 
-            app.show(s);
-        });
+        app.show();
     }
 
     private static void showPersonList(Application app) {
@@ -59,10 +58,21 @@ public class SimpleViewAppDemo1 {
         view.setCenterNode(list);
 
         ActionFooter footer = new ActionFooter();
-        footer.addAction(new Action("Call"));
-        footer.addAction(new Action(Icon.MAIL, "Send message"));
+        footer.addAction(new Action(Icon.PHONE, "Call"));
+        footer.addAction(new Action(Icon.MAIL, "Send message", () -> view.setCenterNode(createChatTimeline())));
         view.setFooterNode(footer);
 
         app.setWorkbench(view);
+    }
+
+    private static ChatTimeline<DefaultChatMessage> createChatTimeline() {
+        ChatTimeline<DefaultChatMessage> timeline = new ChatTimeline<>();
+        timeline.getItems().add(new DefaultChatMessage(true, "Hello"));
+        timeline.getItems().add(new DefaultChatMessage(false, "How are you"));
+        timeline.getItems().add(new DefaultChatMessage(true, "Fine, thanks. Do you want to go to the cinema today?"));
+        timeline.getItems().add(new DefaultChatMessage(true, "Or having some drinks?"));
+        timeline.getItems().add(new DefaultChatMessage(false, "Oh no, I already have a date this evening with Steve. We want to go to a club. If you want you can come with us."));
+        timeline.getItems().add(new DefaultChatMessage(true, "Cool, when do you want to start?"));
+        return timeline;
     }
 }

@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 
+import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,6 +39,12 @@ public class ActionFooter extends Footer {
                         Button button = new Button();
                         button.setText(added.getTitle());
                         button.setTooltip(new Tooltip(added.getTooltip()));
+
+                        button.setOnAction(e -> {
+                            if(added.getCallback() != null) {
+                                added.getCallback().call();
+                            }
+                        });
 
                         if(added.getIcon() != null) {
                             Label iconLabel = new Label();

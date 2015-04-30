@@ -57,7 +57,6 @@ public abstract class BaseToolbar extends Region {
                     for (Action added : c.getAddedSubList()) {
                         Button button = new Button();
                         button.setText(added.getIcon().getText());
-                        button.setTooltip(new Tooltip(added.getTooltip()));
                         button.setOnMouseEntered(e -> {
                             button.setScaleX(1.1);
                             button.setScaleY(1.1);
