@@ -6,15 +6,15 @@ import com.guigarage.sdk.chat.ChatTimeline;
 import com.guigarage.sdk.chat.DefaultChatMessage;
 import com.guigarage.sdk.container.WorkbenchView;
 import com.guigarage.sdk.footer.ActionFooter;
+import com.guigarage.sdk.form.EditorType;
+import com.guigarage.sdk.form.FormLayout;
 import com.guigarage.sdk.list.MediaList;
 import com.guigarage.sdk.util.DefaultMedia;
 import com.guigarage.sdk.util.Icon;
 import com.guigarage.sdk.util.Media;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.paint.Color;
 
-/**
- * Created by hendrikebbers on 12.03.15.
- */
 public class SimpleViewAppDemo1 {
 
     public static void main(String... args) {
@@ -26,14 +26,48 @@ public class SimpleViewAppDemo1 {
         app.addToolbarItem(new Action(Icon.VOLUMNE_UP));
 
         app.addMenuEntry(new Action(Icon.CALENDAR, "Google Calendar", () -> showPersonList(app)));
-        app.addMenuEntry(new Action(Icon.COGS, "System Settings"));
+        app.addMenuEntry(new Action(Icon.COGS, "System Settings", () -> showForm(app)));
         app.addMenuEntry(new Action(Icon.MAIL, "Mail"));
 
         app.setMediaAsMenuHeader(new DefaultMedia("User4711", "Ich bin eine Beschreibung.", SimpleViewAppDemo1.class.getResource("user-13.jpg").toExternalForm()));
 
         app.setMenuFooter(new Action(Icon.COGS, "Configure"));
 
+        showForm(app);
+
         app.show();
+    }
+
+    private static void showForm(Application app) {
+        FormLayout formLayout = new FormLayout();
+
+        formLayout.addHeader("Ich bin eine Form");
+        formLayout.addField("Name");
+        formLayout.addField("Description", EditorType.TEXTAREA);
+
+        formLayout.addSeperator();
+
+        formLayout.addField("Gender", EditorType.COMBOBOX);
+        formLayout.addField("Age");
+
+        formLayout.addHeader("Adresse", "Bitte die Mail-Adresse angeben.");
+        formLayout.addField("Mail");
+        formLayout.addField("Mail2");
+        formLayout.addField("Phone");
+        formLayout.addField("Skype");
+        formLayout.addActions(new Action("Save"), new Action("Cancel"));
+
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setContent(formLayout);
+        scrollPane.setFitToWidth(true);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+
+        WorkbenchView view = new WorkbenchView();
+        view.setCenterNode(scrollPane);
+
+
+        app.setWorkbench(view);
     }
 
     private static void showPersonList(Application app) {

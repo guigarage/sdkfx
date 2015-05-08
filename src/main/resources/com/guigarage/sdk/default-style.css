@@ -396,3 +396,43 @@
 .chat-cell:hover {
     -fx-background-color: white !important;
 }
+
+.form-layout {
+    -fx-padding: 12px;
+}
+
+.form-layout > .form-label {
+    -fx-font-size: 16px;
+}
+
+.form-header-title {
+    -fx-font-size: 18px;
+}
+
+.form-header-description {
+    -fx-font-size: 12px;
+}
+
+.form-header-description .text {
+    -fx-fill: gray;
+}
+
+.form-action-box {
+    -fx-spacing: 8;
+    -fx-alignment: center-right;
+    -fx-padding: 16px 0px 0px 0px;
+}
+
+.form-action-box > .button{
+    -fx-font-size: 16px;
+}
+
+.form-seperator {
+    -fx-stroke: lightgray;
+}
+
+.scroll-pane {
+    -fx-background-color: null;
+    -fx-border-width: 0px;
+}
+

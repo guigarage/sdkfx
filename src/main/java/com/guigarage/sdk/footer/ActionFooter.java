@@ -38,7 +38,6 @@ public class ActionFooter extends Footer {
                     for (Action added : c.getAddedSubList()) {
                         Button button = new Button();
                         button.setText(added.getTitle());
-                        button.setTooltip(new Tooltip(added.getTooltip()));
 
                         button.setOnAction(e -> {
                             if(added.getCallback() != null) {
