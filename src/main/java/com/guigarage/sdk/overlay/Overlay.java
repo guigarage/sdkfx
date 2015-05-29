@@ -131,7 +131,7 @@ public class Overlay extends Region {
 
     @Override
     protected double computePrefHeight(double width) {
-        System.out.println("CALC WITH WIDTH: " + width);
-        return getPadding().getTop() + titleLabel.prefHeight(width) + 2 + seperator.prefHeight(width) + 6 + descriptionLabel.prefHeight(width) + getPadding().getBottom();
+        double widthWithPadding = width - getPadding().getLeft() - getPadding().getRight();
+        return getPadding().getTop() + titleLabel.prefHeight(widthWithPadding) + 2 + seperator.prefHeight(widthWithPadding) + 6 + descriptionLabel.prefHeight(widthWithPadding) + getPadding().getBottom();
     }
 }
