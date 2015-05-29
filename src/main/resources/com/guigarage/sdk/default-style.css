@@ -4,7 +4,6 @@
     -fx-darker-color: derive(-fx-basic-color, -40% );
     -fx-lighter-color: derive(-fx-basic-color, 80% );
     -fx-lightest-color: derive(-fx-basic-color, 95% );
-    -fx-background-color: white;
 }
 
 .text {

@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class Overlay extends Region {
 
-    //TITLE, DESCRIPTION, ACTIONS
+    //TODO: TITLE, DESCRIPTION, ACTIONS
 
     private List<Action> actions;
 
@@ -61,11 +61,20 @@ public class Overlay extends Region {
         }
     }
 
-    public void hide() {
-        hidden.setValue(true);
+    private void stopAnimations() {
         if (showAnimation != null) {
             showAnimation.pause();
         }
+        if (hideAnimation != null) {
+            hideAnimation.pause();
+        }
+    }
+
+    public void hide() {
+        stopAnimations();
+
+        hidden.setValue(true);
+
         TranslateTransition translateTransition = new TranslateTransition(Duration.millis(360), this);
         translateTransition.setInterpolator(Interpolator.EASE_IN);
         translateTransition.setFromY(getTranslateY());
@@ -80,10 +89,10 @@ public class Overlay extends Region {
     }
 
     public void show() {
+        stopAnimations();
+
         hidden.setValue(false);
-        if (hideAnimation != null) {
-            hideAnimation.pause();
-        }
+
         TranslateTransition translateTransition = new TranslateTransition(Duration.millis(360), this);
         translateTransition.setInterpolator(Interpolator.EASE_IN);
         translateTransition.setFromY(getTranslateY());
