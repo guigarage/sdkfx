@@ -8,7 +8,9 @@ import com.guigarage.sdk.container.WorkbenchView;
 import com.guigarage.sdk.footer.ActionFooter;
 import com.guigarage.sdk.form.EditorType;
 import com.guigarage.sdk.form.FormLayout;
+import com.guigarage.sdk.image.SimpleImageView;
 import com.guigarage.sdk.list.MediaList;
+import com.guigarage.sdk.overlay.Overlay;
 import com.guigarage.sdk.util.DefaultMedia;
 import com.guigarage.sdk.util.Icon;
 import com.guigarage.sdk.util.Media;
@@ -27,13 +29,13 @@ public class SimpleViewAppDemo1 {
 
         app.addMenuEntry(new Action(Icon.CALENDAR, "Google Calendar", () -> showPersonList(app)));
         app.addMenuEntry(new Action(Icon.COGS, "System Settings", () -> showForm(app)));
-        app.addMenuEntry(new Action(Icon.MAIL, "Mail"));
+        app.addMenuEntry(new Action(Icon.MAIL, "Mail", () -> showImage(app)));
 
         app.setMediaAsMenuHeader(new DefaultMedia("User4711", "Ich bin eine Beschreibung.", SimpleViewAppDemo1.class.getResource("user-13.jpg").toExternalForm()));
 
         app.setMenuFooter(new Action(Icon.COGS, "Configure"));
 
-        showForm(app);
+        showImage(app);
 
         app.show();
     }
@@ -67,6 +69,18 @@ public class SimpleViewAppDemo1 {
         view.setCenterNode(scrollPane);
 
 
+        app.setWorkbench(view);
+    }
+
+    private static void showImage(Application app) {
+        SimpleImageView imageView = new SimpleImageView();
+        imageView.setImage(SimpleViewAppDemo1.class.getResource("pic.jpg").toExternalForm());
+
+
+        imageView.setOverlay(new Overlay());
+
+        WorkbenchView view = new WorkbenchView();
+        view.setCenterNode(imageView);
         app.setWorkbench(view);
     }
 

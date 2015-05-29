@@ -65,6 +65,11 @@ public abstract class BaseToolbar extends Region {
                             button.setScaleX(1.0);
                             button.setScaleY(1.0);
                         });
+                        button.setOnAction(e -> {
+                            if(added.getCallback() != null) {
+                                added.getCallback().call();
+                            }
+                        });
 
                         actionBox.getChildren().add(button);
                         itemToNode.put(added, button);

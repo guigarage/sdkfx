@@ -52,6 +52,13 @@ public class Action {
         this.callback = new SimpleObjectProperty<>(callback);
     }
 
+    public Action(Icon icon, Callback callback) {
+        this.icon = new SimpleObjectProperty<>(icon);
+        this.title = new SimpleStringProperty();
+        this.tooltip = new SimpleStringProperty();
+        this.callback = new SimpleObjectProperty<>(callback);
+    }
+
     public String getTitle() {
         return title.get();
     }

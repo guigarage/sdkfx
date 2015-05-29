@@ -4,6 +4,7 @@
     -fx-darker-color: derive(-fx-basic-color, -40% );
     -fx-lighter-color: derive(-fx-basic-color, 80% );
     -fx-lightest-color: derive(-fx-basic-color, 95% );
+    -fx-background-color: white;
 }
 
 .text {
@@ -432,7 +433,41 @@
 }
 
 .scroll-pane {
-    -fx-background-color: null;
+    -fx-background-color: transparent;
     -fx-border-width: 0px;
 }
 
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.simple-image-view {
+    -fx-background-color: black;
+}
+
+.overlay {
+    -fx-padding: 12px;
+    -fx-background-color: rgba(0, 0, 0, 0.4);
+    -fx-border-color: rgba(0, 0, 0, 0.2);
+    -fx-border-width: 1px 0px 0px 0px;
+}
+
+.overlay-content .text{
+    -fx-fill: white;
+}
+
+.overlay-title .text {
+    -fx-font-size: 16px;
+}
+
+.overlay-description .text {
+    -fx-font-size: 12px;
+    -fx-font-style: italic;
+    -fx-fill: white;
+}
+
+.overlay-seperator {
+    -fx-stroke: rgba(255, 255, 255, 0.6);
+    -fx-stroke-width: 1px;
+    -fx-stroke-type: centered;
+}
