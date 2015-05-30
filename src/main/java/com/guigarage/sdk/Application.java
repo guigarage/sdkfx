@@ -1,6 +1,7 @@
 package com.guigarage.sdk;
 
 import com.guigarage.sdk.action.Action;
+import com.guigarage.sdk.actionbutton.GlobalActionButton;
 import com.guigarage.sdk.container.Workbench;
 import com.guigarage.sdk.menu.MenuPane;
 import com.guigarage.sdk.toolbar.ApplicationToolbar;
@@ -15,6 +16,7 @@ import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -52,6 +54,8 @@ public class Application extends VBox {
 
     private Condition javaFXStarterCondition;
 
+    private GlobalActionButton globalActionButton;
+
     public Application() {
         stage = new SimpleObjectProperty<>();
         scene = new SimpleObjectProperty<>();
@@ -68,40 +72,7 @@ public class Application extends VBox {
                     try {
                         stage.setValue(s);
 
-                        baseColor = new SimpleObjectProperty();
-                        stylesheets = FXCollections.observableArrayList();
-
-                        workbench = new Workbench();
-                        menuSlider = new SliderPane();
-                        menuSlider.setPinned(false);
-                        menuPane = new MenuPane();
-                        menuPane.setGlobalActionCallback(() -> menuSlider.hidePopover());
-                        menuSlider.setPopover(menuPane);
-                        menuSlider.setContent(workbench);
-
-                        toolbar = new ApplicationToolbar();
-                        toolbar.setMenuButtonCallback(() -> {
-                            if (menuSlider.isPopoverVisible()) {
-                                menuSlider.hidePopover();
-                            } else {
-                                menuSlider.showPopover();
-                            }
-                        });
-                        VBox.setVgrow(toolbar, Priority.NEVER);
-
-                        VBox menuBox = new VBox();
-                        menuBox.setPadding(new Insets(6));
-
-                        VBox.setVgrow(menuSlider, Priority.ALWAYS);
-
-                        setFillWidth(true);
-                        getChildren().addAll(toolbar, menuSlider);
-
-                        baseColor.addListener(e -> {
-                            if (baseColor.get() != null) {
-                                setStyle("-fx-basic-color: rgba(" + (int) (baseColor.get().getRed() * 255) + ", " + (int) (baseColor.get().getGreen() * 255) + ", " + (int) (baseColor.get().getBlue() * 255) + ", " + (int) (baseColor.get().getOpacity() * 255) + ");");
-                            }
-                        });
+                        initApplication();
 
 
                         javaFXStarterCondition.signalAll();
@@ -121,6 +92,74 @@ public class Application extends VBox {
         } finally {
             javaFxStarterLock.unlock();
         }
+    }
+
+    private void initApplication() {
+        baseColor = new SimpleObjectProperty();
+        stylesheets = FXCollections.observableArrayList();
+
+        workbench = new Workbench();
+        menuSlider = new SliderPane();
+        menuSlider.setPinned(false);
+        menuPane = new MenuPane();
+        menuPane.setGlobalActionCallback(() -> menuSlider.hidePopover());
+        menuSlider.setPopover(menuPane);
+        menuSlider.setContent(workbench);
+
+        toolbar = new ApplicationToolbar();
+        toolbar.setMenuButtonCallback(() -> {
+            if (menuSlider.isPopoverVisible()) {
+                menuSlider.hidePopover();
+            } else {
+                menuSlider.showPopover();
+            }
+        });
+        VBox.setVgrow(toolbar, Priority.NEVER);
+
+        VBox menuBox = new VBox();
+        menuBox.setPadding(new Insets(6));
+
+        VBox.setVgrow(menuSlider, Priority.ALWAYS);
+
+        setFillWidth(true);
+        getChildren().addAll(toolbar, menuSlider);
+
+        baseColor.addListener(e -> {
+            if (baseColor.get() != null) {
+                setStyle("-fx-basic-color: rgba(" + (int) (baseColor.get().getRed() * 255) + ", " + (int) (baseColor.get().getGreen() * 255) + ", " + (int) (baseColor.get().getBlue() * 255) + ", " + (int) (baseColor.get().getOpacity() * 255) + ");");
+            }
+        });
+
+        globalActionButton = new GlobalActionButton();
+        globalActionButton.setManaged(false);
+        getChildren().add(globalActionButton);
+    }
+
+    @Override
+    protected void layoutChildren() {
+        super.layoutChildren();
+        globalActionButton.toFront();
+        double actionButtonPrefWidth = globalActionButton.prefWidth(-1);
+        double actionButtonPrefHeight = globalActionButton.prefHeight(-1);
+        globalActionButton.resize(actionButtonPrefWidth, actionButtonPrefHeight);
+        if(toolbar.isLarge()) {
+            globalActionButton.relocate(getWidth() - getPadding().getRight() - 48 - actionButtonPrefWidth, toolbar.getHeight() - actionButtonPrefHeight / 2);
+        } else {
+            globalActionButton.relocate(getWidth() - getPadding().getRight() - 48 - actionButtonPrefWidth, toolbar.getHeight() + 48);
+        }
+
+    }
+
+    public void removeGlobalAction(Action action) {
+        globalActionButton.getActions().remove(action);
+    }
+
+    public void clearGlobalActions() {
+        globalActionButton.getActions().clear();
+    }
+
+    public void addGlobalAction(Action action) {
+        globalActionButton.getActions().add(action);
     }
 
     public void setTitle(String title) {
@@ -165,6 +204,30 @@ public class Application extends VBox {
 
     public void setMenuButtonVisible(boolean visible) {
         toolbar.setMenuButtonVisible(visible);
+    }
+
+    public void setToolbarLarge(boolean large) {
+        toolbar.setLarge(large);
+    }
+
+    public boolean isToolbarLarge() {
+        return toolbar.isLarge();
+    }
+
+    public void animateToolbarToLargeVersion() {
+        toolbar.animateToLargeVersion();
+    }
+
+    public void animateToolbarToSmallVersion() {
+        toolbar.animateToSmallVersion();
+    }
+
+    public void setToolbarBackgroundImage(Image image) {
+        toolbar.setBackgroundImage(image);
+    }
+
+    public void setToolbarBackgroundImage(String path) {
+        toolbar.setBackgroundImage(path);
     }
 
     public void show() {

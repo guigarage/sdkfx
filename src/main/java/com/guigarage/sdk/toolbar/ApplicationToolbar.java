@@ -2,6 +2,9 @@ package com.guigarage.sdk.toolbar;
 
 import com.guigarage.sdk.util.Callback;
 import com.guigarage.sdk.util.Icon;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.css.PseudoClass;
 import javafx.scene.control.Button;
 
 /**
@@ -26,6 +29,8 @@ public class ApplicationToolbar extends BaseToolbar {
             menuButton.setScaleY(1.0);
         });
         leftNodeProperty().setValue(menuButton);
+
+
     }
 
     public void setMenuButtonVisible(boolean visible) {

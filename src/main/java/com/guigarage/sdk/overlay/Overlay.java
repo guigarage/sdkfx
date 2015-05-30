@@ -4,6 +4,7 @@ package com.guigarage.sdk.overlay;
 import com.guigarage.sdk.action.Action;
 import javafx.animation.*;
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.geometry.Orientation;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
@@ -47,6 +48,9 @@ public class Overlay extends Region {
         seperator.getStyleClass().addAll("overlay-content", "overlay-seperator");
 
         getChildren().addAll(titleLabel, descriptionLabel, seperator);
+
+        hidden = new SimpleBooleanProperty(false);
+
     }
 
     public boolean isHidden() {

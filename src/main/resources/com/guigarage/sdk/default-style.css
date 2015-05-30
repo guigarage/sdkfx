@@ -46,11 +46,13 @@
 }
 
 .application-toolbar {
-    -fx-min-height: 64px;
-    -fx-pref-height: 64px;
-    -fx-max-height: 64px;
     -fx-background-color: -fx-basic-color;
     -fx-padding: 4px;
+}
+
+
+.application-toolbar:large {
+    -fx-border-color: -fx-basic-color;
 }
 
 .base-toolbar > .text {
@@ -63,7 +65,11 @@
 }
 
 .application-toolbar > .text {
-    -fx-font-size: 20px;
+    -fx-font-size: 24px;
+}
+
+.application-toolbar:large > .text {
+    -fx-font-size: 28px;
 }
 
 .base-toolbar > .action-box {
@@ -469,4 +475,32 @@
     -fx-stroke: rgba(255, 255, 255, 0.6);
     -fx-stroke-width: 1px;
     -fx-stroke-type: centered;
+}
+
+.toolbar-background-image-view {
+    -fx-background-color: transparent;
+}
+
+.global-action-button {
+    -fx-padding: 12px;
+}
+
+.global-action-button-background {
+    -fx-fill: -fx-lighter-color;
+    -fx-effect: dropshadow(gaussian, #000000dd, 8, 0.4, 0, 0);
+}
+
+.global-action-button {
+    -fx-spacing: 12px;
+}
+
+.global-action-button > .button {
+    -fx-border-color: null;
+    -fx-background-color: null;
+}
+
+.global-action-button > .button .text {
+    -fx-font-family: FontAwesome !important;
+    -fx-font-size: 36px;
+    -fx-fill: white !important;
 }

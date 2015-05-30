@@ -24,8 +24,10 @@ public class SimpleViewAppDemo1 {
         Application app = new Application();
         app.setTitle("MyApp");
         app.setBaseColor(Color.DARKORCHID);
-        app.addToolbarItem(new Action(Icon.VOLUMNE_DOWN));
-        app.addToolbarItem(new Action(Icon.VOLUMNE_UP));
+        app.addToolbarItem(new Action(Icon.VOLUMNE_DOWN, () -> app.animateToolbarToLargeVersion()));
+        app.addToolbarItem(new Action(Icon.VOLUMNE_UP, () -> app.animateToolbarToSmallVersion()));
+
+        app.setToolbarBackgroundImage(SimpleViewAppDemo1.class.getResource("toolbar-background.png").toExternalForm());
 
         app.addMenuEntry(new Action(Icon.CALENDAR, "Google Calendar", () -> showPersonList(app)));
         app.addMenuEntry(new Action(Icon.COGS, "System Settings", () -> showForm(app)));
@@ -70,18 +72,21 @@ public class SimpleViewAppDemo1 {
 
 
         app.setWorkbench(view);
+        app.clearGlobalActions();
     }
 
     private static void showImage(Application app) {
         SimpleImageView imageView = new SimpleImageView();
         imageView.setImage(SimpleViewAppDemo1.class.getResource("pic.jpg").toExternalForm());
 
-
         imageView.setOverlay(new Overlay());
 
         WorkbenchView view = new WorkbenchView();
         view.setCenterNode(imageView);
         app.setWorkbench(view);
+
+        app.clearGlobalActions();
+        app.addGlobalAction(new Action(Icon.NAV, () -> imageView.toggleOverlayVisibility()));
     }
 
     private static void showPersonList(Application app) {
@@ -111,6 +116,10 @@ public class SimpleViewAppDemo1 {
         view.setFooterNode(footer);
 
         app.setWorkbench(view);
+
+        app.clearGlobalActions();
+        app.addGlobalAction(new Action(Icon.VOLUMNE_DOWN));
+        app.addGlobalAction(new Action(Icon.VOLUMNE_UP));
     }
 
     private static ChatTimeline<DefaultChatMessage> createChatTimeline() {
