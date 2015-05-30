@@ -132,6 +132,7 @@ public class Application extends VBox {
 
         globalActionButton = new GlobalActionButton();
         globalActionButton.setManaged(false);
+        globalActionButton.disableProperty().bind(menuSlider.popoverVisibleProperty());
         getChildren().add(globalActionButton);
     }
 

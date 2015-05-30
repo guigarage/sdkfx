@@ -490,6 +490,10 @@
     -fx-effect: dropshadow(gaussian, #000000dd, 8, 0.4, 0, 0);
 }
 
+.global-action-button:disabled > .global-action-button-background {
+    -fx-fill: darkgray;
+}
+
 .global-action-button {
     -fx-spacing: 12px;
 }
