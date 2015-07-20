@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.css.PseudoClass;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -88,6 +89,11 @@ public abstract class BaseToolbar extends Region {
                                 added.getCallback().call();
                             }
                         });
+
+                        Tooltip t = new Tooltip(added.getTooltip());
+                        button.setTooltip(t);
+                        added.tooltipProperty().bind(t.textProperty());
+
 
                         actionBox.getChildren().add(button);
                         itemToNode.put(added, button);
