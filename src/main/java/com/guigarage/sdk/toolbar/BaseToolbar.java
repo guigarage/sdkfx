@@ -94,7 +94,6 @@ public abstract class BaseToolbar extends Region {
                         button.setTooltip(t);
                         added.tooltipProperty().bind(t.textProperty());
 
-
                         actionBox.getChildren().add(button);
                         itemToNode.put(added, button);
                     }

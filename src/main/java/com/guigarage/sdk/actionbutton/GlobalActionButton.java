@@ -1,12 +1,14 @@
 package com.guigarage.sdk.actionbutton;
 
 import com.guigarage.sdk.action.Action;
+import com.guigarage.sdk.effects.RippleEffect;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
 
@@ -20,6 +22,7 @@ public class GlobalActionButton extends HBox {
     private Map<Action, Node> itemToNode;
 
     private Ellipse ellipse;
+
 
     public GlobalActionButton() {
         getStyleClass().add("global-action-button");
@@ -71,6 +74,7 @@ public class GlobalActionButton extends HBox {
         maxWidth(USE_PREF_SIZE);
         minHeight(USE_PREF_SIZE);
         maxHeight(USE_PREF_SIZE);
+
     }
 
     @Override
