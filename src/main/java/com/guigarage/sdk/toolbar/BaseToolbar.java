@@ -1,6 +1,7 @@
 package com.guigarage.sdk.toolbar;
 
 import com.guigarage.sdk.action.Action;
+import com.guigarage.sdk.util.MaterialDesignButton;
 import javafx.animation.*;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
@@ -74,7 +75,7 @@ public abstract class BaseToolbar extends Region {
                         actionBox.getChildren().remove(child);
                     }
                     for (Action added : c.getAddedSubList()) {
-                        Button button = new Button();
+                        Button button = new MaterialDesignButton();
                         button.setText(added.getIcon().getText());
                         button.setOnMouseEntered(e -> {
                             button.setScaleX(1.1);
