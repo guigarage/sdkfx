@@ -12,6 +12,7 @@ public enum Icons implements Icon {
     MAIL("\uf003"),
     NAV("\uf0c9"),
     PHONE("\uf095"),
+    SEARCH("\uf002"),
     VOLUMNE_DOWN("\uf027"),
     VOLUMNE_UP("\uf028");
 
