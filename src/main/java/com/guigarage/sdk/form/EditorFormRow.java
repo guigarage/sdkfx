@@ -10,16 +10,21 @@ import javafx.scene.text.TextAlignment;
 
 import java.util.List;
 
-public class EditorFormRow implements FormRow {
+public class EditorFormRow<T extends Node> implements FormRow {
 
     private Label label;
 
-    private Node editor;
+    private T editor;
 
     private FormEditor formEditor;
 
-    public EditorFormRow(String labelText, EditorType editorType) {
-        this.editor = createEditor(editorType);
+    /**
+     *
+     * @param labelText The forms row label for this editor
+     * @param editor e.g. new TextField(), new TextArea(), new CheckBox(), new ListView<>()
+     */
+    public EditorFormRow(String labelText, T editor) {
+        this.editor = editor;
         this.label = createLabel(labelText, editor);
 
         label.disableProperty().bind(editor.disableProperty());
@@ -29,25 +34,6 @@ public class EditorFormRow implements FormRow {
         nameProperty.addListener(e -> label.setText(nameProperty.get() + ":"));
 
         formEditor = new FormEditor(editor.disableProperty(), nameProperty, editor.visibleProperty());
-    }
-
-    private Node createEditor(EditorType editorType) {
-        if(editorType.equals(EditorType.TEXTFIELD)) {
-            return new TextField();
-        }
-        if(editorType.equals(EditorType.TEXTAREA)) {
-            return new TextArea();
-        }
-        if(editorType.equals(EditorType.CHECKBOX)) {
-            return new CheckBox();
-        }
-        if(editorType.equals(EditorType.COMBOBOX)) {
-            return new ComboBox<>();
-        }
-        if(editorType.equals(EditorType.LIST)) {
-            return new ListView<>();
-        }
-        return null;
     }
 
     private Label createLabel(String text, Node editor) {
@@ -95,11 +81,53 @@ public class EditorFormRow implements FormRow {
         return label;
     }
 
-    public Node getEditor() {
+    public T getEditor() {
         return editor;
     }
 
     public FormEditor getFormEditor() {
         return formEditor;
+    }
+
+    public static EditorFormRow newEditorFormRow(String label, EditorType editorType) {
+        EditorFormRow row = null;
+        switch (editorType) {
+            case TEXTFIELD:
+                row = newTextFieldRow(label);
+                break;
+            case TEXTAREA:
+                row = newTextAreaRow(label);
+                break;
+            case CHECKBOX:
+                row = newCheckBoxRow(label);
+                break;
+            case COMBOBOX:
+                row = newComboBox(label);
+                break;
+            case LIST:
+                row = newListViewRow(label);
+                break;
+        }
+        return row;
+    }
+
+    public static EditorFormRow<TextField> newTextFieldRow(String label) {
+        return new EditorFormRow<>(label, new TextField());
+    }
+
+    public static EditorFormRow<TextArea> newTextAreaRow(String label) {
+        return new EditorFormRow<>(label, new TextArea());
+    }
+
+    public static EditorFormRow<CheckBox> newCheckBoxRow(String label) {
+        return new EditorFormRow<>(label, new CheckBox());
+    }
+
+    public static <A> EditorFormRow<ComboBox<A>> newComboBox(String label) {
+        return new EditorFormRow<>(label, new ComboBox<>());
+    }
+
+    public static <A> EditorFormRow<ListView<A>> newListViewRow(String label) {
+        return new EditorFormRow<>(label, new ListView<>());
     }
 }

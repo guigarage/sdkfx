@@ -44,7 +44,7 @@ public class FormLayout extends Region {
     }
 
     public FormEditor addField(String name, EditorType type) {
-        EditorFormRow row = new EditorFormRow(name, type);
+        EditorFormRow row = EditorFormRow.newEditorFormRow(name, type);
         add(row);
         return row.getFormEditor();
     }
