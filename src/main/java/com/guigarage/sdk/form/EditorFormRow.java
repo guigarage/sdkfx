@@ -102,7 +102,7 @@ public class EditorFormRow<T extends Node> implements FormRow {
                 row = newCheckBoxRow(label);
                 break;
             case COMBOBOX:
-                row = newComboBox(label);
+                row = newComboBoxRow(label);
                 break;
             case LIST:
                 row = newListViewRow(label);
@@ -123,7 +123,7 @@ public class EditorFormRow<T extends Node> implements FormRow {
         return new EditorFormRow<>(label, new CheckBox());
     }
 
-    public static <A> EditorFormRow<ComboBox<A>> newComboBox(String label) {
+    public static <A> EditorFormRow<ComboBox<A>> newComboBoxRow(String label) {
         return new EditorFormRow<>(label, new ComboBox<>());
     }
 
