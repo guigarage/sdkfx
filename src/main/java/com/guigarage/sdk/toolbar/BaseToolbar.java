@@ -1,6 +1,7 @@
 package com.guigarage.sdk.toolbar;
 
 import com.guigarage.sdk.action.Action;
+import com.guigarage.sdk.util.MaterialDesignButton;
 import javafx.animation.*;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
@@ -9,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.css.PseudoClass;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -73,7 +75,7 @@ public abstract class BaseToolbar extends Region {
                         actionBox.getChildren().remove(child);
                     }
                     for (Action added : c.getAddedSubList()) {
-                        Button button = new Button();
+                        Button button = new MaterialDesignButton();
                         button.setText(added.getIcon().getText());
                         button.setOnMouseEntered(e -> {
                             button.setScaleX(1.1);
@@ -88,6 +90,10 @@ public abstract class BaseToolbar extends Region {
                                 added.getCallback().call();
                             }
                         });
+
+                        Tooltip t = new Tooltip(added.getTooltip());
+                        button.setTooltip(t);
+                        added.tooltipProperty().bind(t.textProperty());
 
                         actionBox.getChildren().add(button);
                         itemToNode.put(added, button);

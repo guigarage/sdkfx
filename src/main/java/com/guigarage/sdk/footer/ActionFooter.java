@@ -1,7 +1,9 @@
 package com.guigarage.sdk.footer;
 
 import com.guigarage.sdk.action.Action;
+import com.guigarage.sdk.effects.RippleEffect;
 import com.guigarage.sdk.menu.MenuEntry;
+import com.guigarage.sdk.util.MaterialDesignButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -36,7 +38,7 @@ public class ActionFooter extends Footer {
                         getChildren().remove(child);
                     }
                     for (Action added : c.getAddedSubList()) {
-                        Button button = new Button();
+                        Button button = new MaterialDesignButton();
                         button.setText(added.getTitle());
 
                         button.setOnAction(e -> {
@@ -56,6 +58,7 @@ public class ActionFooter extends Footer {
                             button.getStyleClass().add("not-first-button");
                         }
                         getChildren().add(button);
+
                         itemToNode.put(added, button);
                     }
                 }

@@ -12,7 +12,7 @@ import com.guigarage.sdk.image.SimpleImageView;
 import com.guigarage.sdk.list.MediaList;
 import com.guigarage.sdk.overlay.Overlay;
 import com.guigarage.sdk.util.DefaultMedia;
-import com.guigarage.sdk.util.Icon;
+import com.guigarage.sdk.util.Icons;
 import com.guigarage.sdk.util.Media;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.paint.Color;
@@ -24,18 +24,18 @@ public class SimpleViewAppDemo1 {
         Application app = new Application();
         app.setTitle("MyApp");
         app.setBaseColor(Color.DARKORCHID);
-        app.addToolbarItem(new Action(Icon.VOLUMNE_DOWN, () -> app.animateToolbarToLargeVersion()));
-        app.addToolbarItem(new Action(Icon.VOLUMNE_UP, () -> app.animateToolbarToSmallVersion()));
+        app.addToolbarItem(new Action(Icons.VOLUMNE_DOWN, () -> app.animateToolbarToLargeVersion()));
+        app.addToolbarItem(new Action(Icons.VOLUMNE_UP, () -> app.animateToolbarToSmallVersion()));
 
         app.setToolbarBackgroundImage(SimpleViewAppDemo1.class.getResource("toolbar-background.png").toExternalForm());
 
-        app.addMenuEntry(new Action(Icon.CALENDAR, "Google Calendar", () -> showPersonList(app)));
-        app.addMenuEntry(new Action(Icon.COGS, "System Settings", () -> showForm(app)));
-        app.addMenuEntry(new Action(Icon.MAIL, "Mail", () -> showImage(app)));
+        app.addMenuEntry(new Action(Icons.CALENDAR, "Google Calendar", () -> showPersonList(app)));
+        app.addMenuEntry(new Action(Icons.COGS, "System Settings", () -> showForm(app)));
+        app.addMenuEntry(new Action(Icons.MAIL, "Mail", () -> showImage(app)));
 
         app.setMediaAsMenuHeader(new DefaultMedia("User4711", "Ich bin eine Beschreibung.", SimpleViewAppDemo1.class.getResource("user-13.jpg").toExternalForm()));
 
-        app.setMenuFooter(new Action(Icon.COGS, "Configure"));
+        app.setMenuFooter(new Action(Icons.COGS, "Configure"));
 
         showImage(app);
 
@@ -86,7 +86,7 @@ public class SimpleViewAppDemo1 {
         app.setWorkbench(view);
 
         app.clearGlobalActions();
-        app.addGlobalAction(new Action(Icon.NAV, () -> imageView.toggleOverlayVisibility()));
+        app.addGlobalAction(new Action(Icons.NAV, () -> imageView.toggleOverlayVisibility()));
     }
 
     private static void showPersonList(Application app) {
@@ -111,15 +111,15 @@ public class SimpleViewAppDemo1 {
         view.setCenterNode(list);
 
         ActionFooter footer = new ActionFooter();
-        footer.addAction(new Action(Icon.PHONE, "Call"));
-        footer.addAction(new Action(Icon.MAIL, "Send message", () -> view.setCenterNode(createChatTimeline())));
+        footer.addAction(new Action(Icons.PHONE, "Call"));
+        footer.addAction(new Action(Icons.MAIL, "Send message", () -> view.setCenterNode(createChatTimeline())));
         view.setFooterNode(footer);
 
         app.setWorkbench(view);
 
         app.clearGlobalActions();
-        app.addGlobalAction(new Action(Icon.VOLUMNE_DOWN));
-        app.addGlobalAction(new Action(Icon.VOLUMNE_UP));
+        app.addGlobalAction(new Action(Icons.VOLUMNE_DOWN));
+        app.addGlobalAction(new Action(Icons.VOLUMNE_UP));
     }
 
     private static ChatTimeline<DefaultChatMessage> createChatTimeline() {

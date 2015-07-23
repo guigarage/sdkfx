@@ -2,6 +2,7 @@ package com.guigarage.sdk.action;
 
 import com.guigarage.sdk.util.Callback;
 import com.guigarage.sdk.util.Icon;
+import com.guigarage.sdk.util.Icons;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -21,7 +22,7 @@ public class Action {
     private ObjectProperty<Callback> callback;
 
     public Action() {
-        this(Icon.VOLUMNE_UP);
+        this(Icons.VOLUMNE_UP);
     }
 
     public Action(Icon icon) {

@@ -1,6 +1,7 @@
 package com.guigarage.sdk.form;
 
 import com.guigarage.sdk.action.Action;
+import com.guigarage.sdk.util.MaterialDesignButton;
 import javafx.collections.FXCollections;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -16,7 +17,7 @@ public class ActionFormRow implements FormRow {
         layout = new HBox();
         layout.getStyleClass().add("form-action-box");
         for(Action action : actions) {
-            Button button = new Button(action.getTitle());
+            Button button = new MaterialDesignButton(action.getTitle());
             button.setOnAction(e -> action.getCallback().call());
             layout.getChildren().add(button);
         }

@@ -2,6 +2,7 @@ package com.guigarage.sdk.menu;
 
 import com.guigarage.sdk.util.Callback;
 import com.guigarage.sdk.util.Icon;
+import com.guigarage.sdk.util.Icons;
 import javafx.beans.property.*;
 import javafx.css.PseudoClass;
 import javafx.scene.Node;
