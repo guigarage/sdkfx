@@ -157,6 +157,10 @@ public abstract class BaseToolbar extends Region {
         backgroundImageView.setImage(new Image(path));
     }
 
+    public Image getBackgroundImage() {
+        return backgroundImageView.getImage();
+    }
+
     public boolean isLarge() {
         return large.get();
     }

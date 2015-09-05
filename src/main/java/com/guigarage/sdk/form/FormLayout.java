@@ -16,6 +16,8 @@ public class FormLayout extends Region {
 
     private List<FormRow> rows;
 
+    private final static int ROW_MARGIN = 12;
+
     public FormLayout() {
         getStyleClass().addAll("form-layout");
         this.labelEditorSpacing = new SimpleDoubleProperty(12);
@@ -60,7 +62,7 @@ public class FormLayout extends Region {
         double rowStartY = getPadding().getTop();
 
         for (FormRow row : rows) {
-            rowStartY = row.layoutInParent(getPadding().getLeft(), rowStartY, getWidth() - getPadding().getLeft() - getPadding().getRight(), labelWidth, rowSpacing.get(), labelEditorSpacing.get());
+            rowStartY = row.layoutInParent(getPadding().getLeft(), rowStartY, getWidth() - getPadding().getLeft() - getPadding().getRight(), labelWidth, rowSpacing.get(), labelEditorSpacing.get()) + ROW_MARGIN;
         }
     }
 

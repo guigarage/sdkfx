@@ -11,10 +11,13 @@ import com.guigarage.sdk.form.FormLayout;
 import com.guigarage.sdk.image.SimpleImageView;
 import com.guigarage.sdk.list.MediaList;
 import com.guigarage.sdk.overlay.Overlay;
+import com.guigarage.sdk.table.MediaTable;
 import com.guigarage.sdk.util.DefaultMedia;
 import com.guigarage.sdk.util.Icon;
 import com.guigarage.sdk.util.Media;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
 public class SimpleViewAppDemo1 {
@@ -29,9 +32,49 @@ public class SimpleViewAppDemo1 {
 
         app.setToolbarBackgroundImage(SimpleViewAppDemo1.class.getResource("toolbar-background.png").toExternalForm());
 
-        app.addMenuEntry(new Action(Icon.CALENDAR, "Google Calendar", () -> showPersonList(app)));
+        app.addMenuEntry(new Action(Icon.CALENDAR, "Show List", () -> showPersonList(app)));
+        app.addMenuEntry(new Action(Icon.CALENDAR, "Show Table", () -> showPersonTable(app)));
         app.addMenuEntry(new Action(Icon.COGS, "System Settings", () -> showForm(app)));
         app.addMenuEntry(new Action(Icon.MAIL, "Mail", () -> showImage(app)));
+
+        app.addMenuEntry(new Action(Icon.MAIL, "Toogle App Color", () -> {
+            double random = Math.random();
+            if(random < 0.1) {
+                app.setBaseColor(Color.ORANGE);
+            } else if(random < 0.2) {
+                app.setBaseColor(Color.DARKORCHID);
+            } else if(random < 0.3) {
+                app.setBaseColor(Color.DARKRED);
+            } else if(random < 0.4) {
+                app.setBaseColor(Color.BLUEVIOLET);
+            } else if(random < 0.5) {
+                app.setBaseColor(Color.BLUE);
+            } else if(random < 0.6) {
+                app.setBaseColor(Color.PINK);
+            } else if(random < 0.7) {
+                app.setBaseColor(Color.PURPLE);
+            } else if(random < 0.8) {
+                app.setBaseColor(Color.GREEN);
+            } else if(random < 0.9) {
+                app.setBaseColor(Color.DARKGOLDENROD);
+            } else {
+                app.setBaseColor(Color.DARKTURQUOISE);
+            }
+        }));
+        app.addMenuEntry(new Action(Icon.MAIL, "Toogle Toolbar Size", () -> {
+            if (app.isToolbarLarge()) {
+                app.animateToolbarToSmallVersion();
+            } else {
+                app.animateToolbarToLargeVersion();
+            }
+        }));
+        app.addMenuEntry(new Action(Icon.MAIL, "Toogle Toolbar Image", () -> {
+            if (app.getToolbarBackgroundImage() != null) {
+                app.setToolbarBackgroundImage((Image) null);
+            } else {
+                app.setToolbarBackgroundImage(SimpleViewAppDemo1.class.getResource("toolbar-background.png").toExternalForm());
+            }
+        }));
 
         app.setMediaAsMenuHeader(new DefaultMedia("User4711", "Ich bin eine Beschreibung.", SimpleViewAppDemo1.class.getResource("user-13.jpg").toExternalForm()));
 
@@ -109,6 +152,39 @@ public class SimpleViewAppDemo1 {
         list.getItems().add(new DefaultMedia("Test13", "Ich bin eine Beschreibung", SimpleViewAppDemo1.class.getResource("user-13.jpg").toExternalForm()));
 
         view.setCenterNode(list);
+
+        ActionFooter footer = new ActionFooter();
+        footer.addAction(new Action(Icon.PHONE, "Call"));
+        footer.addAction(new Action(Icon.MAIL, "Send message", () -> view.setCenterNode(createChatTimeline())));
+        view.setFooterNode(footer);
+
+        app.setWorkbench(view);
+
+        app.clearGlobalActions();
+        app.addGlobalAction(new Action(Icon.VOLUMNE_DOWN));
+        app.addGlobalAction(new Action(Icon.VOLUMNE_UP));
+    }
+
+    private static void showPersonTable(Application app) {
+        WorkbenchView view = new WorkbenchView();
+
+        MediaTable table = new MediaTable();
+
+        table.getItems().add(new DefaultMedia("Test01", "Ich bin eine Beschreibung", SimpleViewAppDemo1.class.getResource("user-01.jpg").toExternalForm()));
+        table.getItems().add(new DefaultMedia("Test02", "Ich bin eine Beschreibung", SimpleViewAppDemo1.class.getResource("user-02.jpg").toExternalForm()));
+        table.getItems().add(new DefaultMedia("Test03", "Ich bin eine Beschreibung", SimpleViewAppDemo1.class.getResource("user-03.jpg").toExternalForm()));
+        table.getItems().add(new DefaultMedia("Test04", "Ich bin eine Beschreibung", SimpleViewAppDemo1.class.getResource("user-04.jpg").toExternalForm()));
+        table.getItems().add(new DefaultMedia("Test05", "Ich bin eine Beschreibung", SimpleViewAppDemo1.class.getResource("user-05.jpg").toExternalForm()));
+        table.getItems().add(new DefaultMedia("Test06", "Ich bin eine Beschreibung", SimpleViewAppDemo1.class.getResource("user-06.jpg").toExternalForm()));
+        table.getItems().add(new DefaultMedia("Test07", "Ich bin eine Beschreibung", SimpleViewAppDemo1.class.getResource("user-07.jpg").toExternalForm()));
+        table.getItems().add(new DefaultMedia("Test08", "Ich bin eine Beschreibung", SimpleViewAppDemo1.class.getResource("user-08.jpg").toExternalForm()));
+        table.getItems().add(new DefaultMedia("Test09", "Ich bin eine Beschreibung", SimpleViewAppDemo1.class.getResource("user-09.jpg").toExternalForm()));
+        table.getItems().add(new DefaultMedia("Test10", "Ich bin eine Beschreibung", SimpleViewAppDemo1.class.getResource("user-10.jpg").toExternalForm()));
+        table.getItems().add(new DefaultMedia("Test11", "Ich bin eine Beschreibung", SimpleViewAppDemo1.class.getResource("user-11.jpg").toExternalForm()));
+        table.getItems().add(new DefaultMedia("Test12", "Ich bin eine Beschreibung", SimpleViewAppDemo1.class.getResource("user-12.jpg").toExternalForm()));
+        table.getItems().add(new DefaultMedia("Test13", "Ich bin eine Beschreibung", SimpleViewAppDemo1.class.getResource("user-13.jpg").toExternalForm()));
+
+        view.setCenterNode(table);
 
         ActionFooter footer = new ActionFooter();
         footer.addAction(new Action(Icon.PHONE, "Call"));

@@ -262,4 +262,8 @@ public class Application extends VBox {
     public void setStopCallback(Callback stopCallback) {
         this.stopCallback.set(stopCallback);
     }
+
+    public Image getToolbarBackgroundImage() {
+        return toolbar.getBackgroundImage();
+    }
 }
