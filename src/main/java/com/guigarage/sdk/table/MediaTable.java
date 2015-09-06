@@ -36,6 +36,7 @@ public class MediaTable extends TableView<Media> {
         imageTableColumn.setCellValueFactory(c -> c.getValue().imageProperty());
         imageTableColumn.textProperty().bind(imageColumnHeaderText);
         imageTableColumn.visibleProperty().bind(imageColumnHeaderVisible);
+        imageTableColumn.setCellFactory(c -> new ImageTableCell());
 
         TableColumn<Media, String> titleTableColumn = new TableColumn<>();
         titleTableColumn.setCellValueFactory(c -> c.getValue().titleProperty());
