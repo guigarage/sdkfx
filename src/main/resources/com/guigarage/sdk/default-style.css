@@ -588,5 +588,10 @@
     -fx-border-width: 0;
     -fx-font-size: 16px;
     -fx-text-fill: -fx-text-color;
-    -fx-padding: 16px 0px 0px 0px;
+    -fx-padding: 8px 4px 8px 4px;
+    -fx-wrap-text: true;
+}
+
+.media-table-cell {
+    -fx-padding: 8px 8px 8px 8px !important;
 }

@@ -1,6 +1,8 @@
 package com.guigarage.sdk.table;
 
 import com.guigarage.sdk.util.Media;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.DoubleBinding;
 import javafx.scene.control.TableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -14,7 +16,9 @@ public class ImageTableCell extends TableCell<Media, Image> {
         imageView = new ImageView();
         setGraphic(imageView);
         imageView.setPreserveRatio(true);
-        imageView.fitWidthProperty().bind(widthProperty());
+        DoubleBinding widthBinding = Bindings.createDoubleBinding(() -> getWidth() - getInsets().getLeft() - getInsets().getRight(), widthProperty(), insetsProperty());
+        imageView.fitWidthProperty().bind(widthBinding);
+        getStyleClass().addAll("media-table-cell");
     }
 
     @Override
