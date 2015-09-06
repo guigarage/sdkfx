@@ -1,7 +1,8 @@
 package com.guigarage.sdk.action;
 
 import com.guigarage.sdk.util.Callback;
-import com.guigarage.sdk.util.Icon;
+import com.guigarage.sdk.util.FontAwesomeIcons;
+import com.guigarage.sdk.util.FontBasedIcon;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -14,17 +15,17 @@ public class Action {
 
     private StringProperty title;
 
-    private ObjectProperty<Icon> icon;
+    private ObjectProperty<FontBasedIcon> icon;
 
     private StringProperty tooltip;
 
     private ObjectProperty<Callback> callback;
 
     public Action() {
-        this(Icon.VOLUMNE_UP);
+        this(FontAwesomeIcons.VOLUMNE_UP);
     }
 
-    public Action(Icon icon) {
+    public Action(FontBasedIcon icon) {
         this.icon = new SimpleObjectProperty<>(icon);
         this.title = new SimpleStringProperty();
         this.tooltip = new SimpleStringProperty();
@@ -38,21 +39,21 @@ public class Action {
         this.callback = new SimpleObjectProperty<>();
     }
 
-    public Action(Icon icon, String text) {
+    public Action(FontBasedIcon icon, String text) {
         this.icon = new SimpleObjectProperty<>(icon);
         this.title = new SimpleStringProperty(text);
         this.tooltip = new SimpleStringProperty(text);
         this.callback = new SimpleObjectProperty<>();
     }
 
-    public Action(Icon icon, String text, Callback callback) {
+    public Action(FontBasedIcon icon, String text, Callback callback) {
         this.icon = new SimpleObjectProperty<>(icon);
         this.title = new SimpleStringProperty(text);
         this.tooltip = new SimpleStringProperty(text);
         this.callback = new SimpleObjectProperty<>(callback);
     }
 
-    public Action(Icon icon, Callback callback) {
+    public Action(FontBasedIcon icon, Callback callback) {
         this.icon = new SimpleObjectProperty<>(icon);
         this.title = new SimpleStringProperty();
         this.tooltip = new SimpleStringProperty();
@@ -71,15 +72,15 @@ public class Action {
         this.title.set(title);
     }
 
-    public Icon getIcon() {
+    public FontBasedIcon getIcon() {
         return icon.get();
     }
 
-    public ObjectProperty<Icon> iconProperty() {
+    public ObjectProperty<FontBasedIcon> iconProperty() {
         return icon;
     }
 
-    public void setIcon(Icon icon) {
+    public void setIcon(FontBasedIcon icon) {
         this.icon.set(icon);
     }
 
@@ -107,7 +108,7 @@ public class Action {
         this.callback.set(callback);
     }
 
-    public Action withIcon(Icon icon) {
+    public Action withIcon(FontBasedIcon icon) {
         setIcon(icon);
         return this;
     }

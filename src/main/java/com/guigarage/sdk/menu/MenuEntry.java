@@ -1,7 +1,7 @@
 package com.guigarage.sdk.menu;
 
 import com.guigarage.sdk.util.Callback;
-import com.guigarage.sdk.util.Icon;
+import com.guigarage.sdk.util.FontBasedIcon;
 import javafx.beans.property.*;
 import javafx.css.PseudoClass;
 import javafx.scene.Node;
@@ -23,7 +23,7 @@ public class MenuEntry extends Region {
 
     private StringProperty text;
 
-    private ObjectProperty<Icon> icon;
+    private ObjectProperty<FontBasedIcon> icon;
 
     private ObjectProperty<Callback> callback;
 
@@ -142,15 +142,15 @@ public class MenuEntry extends Region {
         this.text.set(text);
     }
 
-    public Icon getIcon() {
+    public FontBasedIcon getIcon() {
         return icon.get();
     }
 
-    public ObjectProperty<Icon> iconProperty() {
+    public ObjectProperty<FontBasedIcon> iconProperty() {
         return icon;
     }
 
-    public void setIcon(Icon icon) {
+    public void setIcon(FontBasedIcon icon) {
         this.icon.set(icon);
     }
 

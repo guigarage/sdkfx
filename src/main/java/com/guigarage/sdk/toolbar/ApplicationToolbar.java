@@ -1,10 +1,7 @@
 package com.guigarage.sdk.toolbar;
 
 import com.guigarage.sdk.util.Callback;
-import com.guigarage.sdk.util.Icon;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.css.PseudoClass;
+import com.guigarage.sdk.util.FontAwesomeIcons;
 import javafx.scene.control.Button;
 
 /**
@@ -19,7 +16,7 @@ public class ApplicationToolbar extends BaseToolbar {
 
         menuButton = new Button();
         menuButton.setId("application-menu-button");
-        menuButton.setText(Icon.NAV.getText());
+        menuButton.setText(FontAwesomeIcons.NAV.getText());
         menuButton.setOnMouseEntered(e -> {
             menuButton.setScaleX(1.1);
             menuButton.setScaleY(1.1);
